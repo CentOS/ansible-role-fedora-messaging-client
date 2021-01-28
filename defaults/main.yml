@@ -1,1 +1,14 @@
 # Defaults variables for role fedora-messaging-client
+# Worth knowing that this role is mostly to be imported/included from other roles, but good to have in one place
+
+
+# Do we want to directly ship specific TLS certs ?
+# fedora-messaging pkgs already contains generic certs, but we can also have specific ones allowed for 
+# some topics for pub/sub
+# These files should be in {{ pkistore }}/fedora-messaging 
+fedora_messaging_tls_certs: False
+fedora_messaging_tls_cert: 
+fedora_messaging_tls_key:
+fedora_messaging_tls_ca:
+
+

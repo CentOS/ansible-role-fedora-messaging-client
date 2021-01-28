@@ -1,1 +1,19 @@
 # Defaults tasks for role fedora-messaging-client
+
+- name: Ensuring we have fedora-messaging client installed
+  yum:
+    name: fedora-messaging
+    state: latest
+  tags:
+    - pkg
+
+- name: Distributing custom TLS client files if needed
+  copy:
+    src: "{{ pkistore }}/fedora-messaging/{{ item }}"
+    dest: "/etc/fedora-messaging/{{ item }}"
+    mode: 0644
+  with_items:
+    - "{{ fedora_messaging_tls_cert }}"
+    - "{{ fedora_messaging_tls_ca }}"
+    - "{{ fedora_messaging_tls_key }}"
+  when: fedora_messaging_tls_certs  
