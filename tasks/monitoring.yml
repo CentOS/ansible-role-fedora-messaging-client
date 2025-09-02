@@ -23,4 +23,3 @@
     name: FMN Cert monitoring
     job: /usr/lib/zabbix/zabbix-check-fmn-cert.sh
     minute: "0"
-    hour: "0"

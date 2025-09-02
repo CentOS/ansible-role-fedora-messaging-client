@@ -14,4 +14,4 @@ current_epoch=$(date +%s)
 # Calculate days left
 days_left=$(( (expiry_epoch - current_epoch) / 86400 ))
 
-echo $days_left
+zabbix_sender -c /etc/zabbix/zabbix_agentd.conf -k fmn.cert.days -o $days_left >/dev/null
