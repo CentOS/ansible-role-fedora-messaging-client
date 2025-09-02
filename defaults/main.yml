@@ -3,12 +3,16 @@
 
 
 # Do we want to directly ship specific TLS certs ?
-# fedora-messaging pkgs already contains generic certs, but we can also have specific ones allowed for 
+# fedora-messaging pkgs already contains generic certs, but we can also have specific ones allowed for
 # some topics for pub/sub
-# These files should be in {{ pkistore }}/fedora-messaging 
+# These files should be in {{ pkistore }}/fedora-messaging
 fedora_messaging_tls_certs: False
-fedora_messaging_tls_cert: 
+fedora_messaging_tls_cert:
 fedora_messaging_tls_key:
 fedora_messaging_tls_ca:
 
-
+# Zabbix/monitoring part
+vdo_zabbix_templates:
+  - Template CentOS FMN consumer
+vdo_zabbix_groups:
+  - CentOS FMN consumers
