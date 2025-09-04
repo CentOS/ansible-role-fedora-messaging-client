@@ -1,0 +1,17 @@
+#!/bin/bash
+# called by Zabbix to report days-left on the Fedora Messaging cert
+
+PATH=$PATH:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin
+
+# Get the expiry date and convert to epoch seconds
+
+expiry_date=$(openssl x509 -text -in "/etc/fedora-messaging/{{ fedora_messaging_tls_cert }}" | grep "Not After" | sed 's/.*Not After : //')
+expiry_epoch=$(date -d "$expiry_date" +%s)
+
+# Get current time in epoch seconds
+current_epoch=$(date +%s)
+
+# Calculate days left
+days_left=$(( (expiry_epoch - current_epoch) / 86400 ))
+
+zabbix_sender -c /etc/zabbix/zabbix_agentd.conf -k fmn.cert.days -o $days_left >/dev/null

@@ -16,4 +16,10 @@
     - "{{ fedora_messaging_tls_cert }}"
     - "{{ fedora_messaging_tls_ca }}"
     - "{{ fedora_messaging_tls_key }}"
-  when: fedora_messaging_tls_certs  
+  when: fedora_messaging_tls_certs
+
+- name: Include monitoring if custom certs deployed
+  ansible.builtin.include_tasks: monitoring.yml
+  when: fedora_messaging_tls_certs
+  tags:
+    - monitoring
