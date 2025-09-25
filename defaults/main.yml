@@ -12,7 +12,7 @@ fedora_messaging_tls_key:
 fedora_messaging_tls_ca:
 
 # Zabbix/monitoring part
-vdo_zabbix_templates:
+fmn_zabbix_templates:
   - Template CentOS FMN consumer
-vdo_zabbix_groups:
+fmn_zabbix_groups:
   - CentOS FMN consumers
