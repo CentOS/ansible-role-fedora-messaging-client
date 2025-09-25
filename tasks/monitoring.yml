@@ -1,7 +1,6 @@
 - name: Add host in Zabbix UI
   block:
   - name: Configuring agent in Zabbix server
-    when: zabbix_api_srv is defined
     ansible.builtin.include_role:
       name: zabbix-server
       tasks_from: agent_config
@@ -11,6 +10,7 @@
   tags:
     - monitoring
   delegate_to: "{{ zabbix_api_srv }}"
+  when: zabbix_api_srv is defined
 
 - name: Zabbix check for FMN cert expiry
   ansible.builtin.template:
