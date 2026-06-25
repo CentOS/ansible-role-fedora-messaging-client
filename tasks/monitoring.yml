@@ -14,7 +14,7 @@
 
 - name: Zabbix check for FMN cert expiry
   ansible.builtin.template:
-    src: zabbix-check-fmg-cert.sh.j2
+    src: zabbix-check-fmn-cert.sh.j2
     dest: /usr/lib/zabbix/zabbix-check-fmn-cert.sh
     mode: 0750
 
