@@ -1,5 +1,15 @@
 # Defaults tasks for role fedora-messaging-client
 
+- name: Installing other needed tech-preview pkgs
+  yum:                   
+    name: "{{ fedora_messaging_techpreview_pkgs }}"
+    state: installed     
+    disable_gpg_check: yes
+  tags:   
+    - pkgs   
+  when:
+    - fedora_messaging_el10_workaround
+
 - name: Ensuring we have fedora-messaging client installed
   yum:
     name: fedora-messaging
